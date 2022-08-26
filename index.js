@@ -167,9 +167,10 @@ arr2.map((val) => sum3 += val);
 console.log('useMap', sum3);
 
 
+// enter index number of month return month name
 function userInput() {
-    const months = ['jan', 'feb', 'march', 'apr'];
-    const userInput = prompt('Enter the value');
+    const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'augest', 'septembar', 'october', 'november', 'december'];
+    const userInput = prompt('Enter the month index number you get month name');
     const userRes = months[userInput - 1];
     console.log('userRes', userRes);
 }
@@ -189,9 +190,10 @@ let store = sum2(500);
 console.log('closures', store(6));
 
 
+
 //print unique value from array and remove duplicates
 
-//method: 1 using filter() method
+//method: 1 using filter() and  method
 
 let arr3 = [1, 0, 2, 1, 100, 95, 2, 0, 64, 10, 1, 100, 12, 5];
 let uniqueValFilter = arr3.filter((val, index, arr) => arr.indexOf(val) === index);
@@ -201,6 +203,7 @@ console.log('uniqueValFilter', uniqueValFilter);
 
 let uniqueValSet = [...new Set(arr3)];
 console.log('uniqueValSet', uniqueValSet);
+
 
 
 // sort array in ascending order
@@ -249,3 +252,49 @@ for(let i of language){
     languageList += i + `\n`;
 }
 console.log('languageList', languageList);
+
+
+// sum of the array using reduce method
+const numbers2 = [15, 45, 54, 89, 24];
+// (myfunc4, 100) 100 is adding in total sum of array 227 is sum of this array and add  100 and the final answer is the 327
+let sum4 = numbers2.reduce((total, value, index, array) => total + value); // .reduceRight method is sum of an array right to left 
+
+console.log(sum4);
+
+
+// this function call only once
+let callOnce = (function() {
+    let executed = false;
+    return function() {
+        if (!executed) {
+            executed = true;
+            // do something
+            console.log('this function call at once only');
+        }
+    };
+})();
+
+callOnce(); // "do something" happens
+callOnce(); // nothing happens
+
+
+//while loop
+let printWhile = '';
+let i1 = 0;
+while(i1 < 3){
+    printWhile += i1+ `\n`;
+    i1++;
+}
+console.log('print while', printWhile);
+
+
+// do while loop
+let printDoWhile = '';
+let i2 = 0;
+do{
+    printDoWhile += i2 + `\n`;
+    i2++;
+}while(i2 < 3);
+console.log('print do while', printDoWhile);
+
+
