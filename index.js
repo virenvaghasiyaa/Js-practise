@@ -31,14 +31,14 @@ const set = new Set([1, 1, 2, 3, 4]);
 console.log(set); // result = [1,2,3,4]
 
 const fruits = ['apple', 'banana', 'orange'];
-const [, x] = fruits;
+const [, , x] = fruits;
 console.log(x); // result banana
 
 const name = 'asdasfg'
 console.log(!typeof name === 'object'); // false
 console.log(!typeof name === 'string'); // false
 console.log(!typeof name === false); // false === false // true
-// here task performe from left to right
+// here task perform from left to right
 // typeof name = string then !typeof name = false if give "!" to the string it will be false then it compare the flase === 'object' which means it is false.
 
 
@@ -207,7 +207,7 @@ console.log('uniqueValSet', uniqueValSet);
 
 
 // sort array in ascending order
-let sortArr = arr3.sort((a,b) => a-b); // for descending order b-a
+let sortArr = arr3.sort((a, b) => a - b); // for descending order b-a
 console.log('sortArr', sortArr);
 
 
@@ -217,7 +217,7 @@ console.log('sortArr', sortArr);
 const fruitsList = ['apple', 'banana', 'orange', 'mango'];
 
 let list1 = '';
-for(i = 0; i < fruitsList.length; i++){
+for (i = 0; i < fruitsList.length; i++) {
     list1 += fruitsList[i] + `\n`;
 }
 console.log('list1', list1);
@@ -239,7 +239,7 @@ const personInfo = {
 }
 
 let printInfo = '';
-for(let i in personInfo){
+for (let i in personInfo) {
     printInfo += personInfo[i] + ' ';
 }
 console.log(printInfo);
@@ -247,8 +247,8 @@ console.log(printInfo);
 
 // for of loop: for of loop only iterate content of array and object
 let language = ['javascript', 'react', 'angular', 'ruby'];
-let languageList = '';
-for(let i of language){
+let languageList = ''; // for  sum of value provide 0 instead of '' string
+for (let i of language) {
     languageList += i + `\n`;
 }
 console.log('languageList', languageList);
@@ -263,9 +263,9 @@ console.log(sum4);
 
 
 // this function call only once
-let callOnce = (function() {
+let callOnce = (function () {
     let executed = false;
-    return function() {
+    return function () {
         if (!executed) {
             executed = true;
             // do something
@@ -281,8 +281,8 @@ callOnce(); // nothing happens
 //while loop
 let printWhile = '';
 let i1 = 0;
-while(i1 < 3){
-    printWhile += i1+ `\n`;
+while (i1 < 3) {
+    printWhile += i1 + `\n`;
     i1++;
 }
 console.log('print while', printWhile);
@@ -291,10 +291,206 @@ console.log('print while', printWhile);
 // do while loop
 let printDoWhile = '';
 let i2 = 0;
-do{
+do {
     printDoWhile += i2 + `\n`;
     i2++;
-}while(i2 < 3);
+} while (i2 < 3);
 console.log('print do while', printDoWhile);
 
 
+// swap the value without using third variable
+
+let a = 5;
+let b = 6;
+
+// method - 1 using Es6
+
+[a, b] = [b, a];
+console.log('ES6', a, b);
+
+//method - 2 using arithmetic opration
+let x1 = 5;
+let y1 = 6;
+
+x1 = x1 + y1;
+y1 = x1 - y1;
+x1 = x1 - y1;
+
+console.log('arithmetic', x1, y1);
+
+
+// decimal to binary integer
+
+/* function binary(){
+    const number = parseInt(prompt('decimal to binary'));
+    let res = number.toString(2);
+    console.log('binary', res);
+}
+binary(); */
+
+
+
+// for of loop: we can access 
+
+function forOf() {
+    let names = ['john', 'mike', 'steve'];
+    for (let i of names) {
+        console.log(i);
+    }
+}
+forOf();
+
+
+// for In loop: we can access the key and value of object and arrays
+
+function forIn() {
+    const user = {
+        name: 'jonathan',
+        age: 24,
+        userId: 101
+    }
+    for (let i in user) { // here 'i' is for key and 'user' as an object elements value
+        // console.log(i); // here "i" is as a key like in this object is // output: name,age,userId
+        console.log(user[i]); // user[i] is the value of object element
+    }
+}
+forIn();
+
+
+// array reduce method
+
+function funReduce() {
+    const arr = [1, 2, 3];
+    const res = arr.reduce((prevVal, curVal) => {
+        return prevVal + curVal;
+    })
+    console.log('reduce arr', res);
+}
+funReduce();
+
+
+
+// flattening the array
+function flatMap() {
+    const arr = [[10, 20], 30, 40, [50, 60, [70, [80, [90, 100]]]]];
+
+    const res = arr.flatMap(x => x);
+
+    const concatRes = [].concat(...arr);
+
+    const flatRes = arr.flat(4); // in () we provide the level of depth in array if endless then add infinty 
+
+    console.log(res, concatRes, flatRes);
+}
+flatMap();
+
+
+// check in array every element is even or not?
+
+function CheckEven() {
+    const arr = [2, 4, 12, 8];
+    const output = arr.every(num => num % 2 === 0);
+    console.log('checkEven', output);
+}
+CheckEven();
+
+
+// Promises in js 
+
+async function promise() {
+    await new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log('hello');
+            resolve();
+        }, 1000)
+    })
+    console.log('world');
+}
+promise();
+
+
+// arr.push 
+let arr = [];
+for (let i = 0; i < 5; i++) {
+    arr.push('a');
+}
+console.log(arr); // ['a','a','a','a','a'];
+
+
+// custom memoization
+function memoization() {
+    const calc = (n) => {
+        let sum = 0;
+        for (i = 0; i <= n; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+    // console.time();
+    // console.log(calc(500000));
+    // console.timeEnd();
+    
+    const memoize = (newFunc) => {
+        let cache = {};
+        return function(...args){
+            let n = args[0];
+            if(n in cache){
+                console.log('cache');
+                return cache[n];
+            }else{
+                console.log('calc first time');
+                let result = newFunc(n);
+                cache[n] = result;
+                return result;
+            }
+        }
+    }
+    
+    console.time();
+    const efficient = memoize(calc);
+    console.log(efficient(500000))
+    console.timeEnd();
+    
+    console.time();
+    console.log(efficient(500000));
+    console.timeEnd();
+}
+memoization();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+    Questions: 
+    1. rest and spread opration difference?
+    2. virtual DOM?
+    3. let, const, var difference?
+    4. ES5 vs ES6 features?
+    5. css and scss difference?
+    6. how many hooks in react?
+    7. useEffect() vs useLayoutEffect()
+    8. one logical question like convert integer to binary?
+    9. center or right the div container using css?
+    10.most difficulty part that you are face in projects?
+    11.when we use the useMemo()?
+    12.difference of useMemo(), useCallback(), useEffect()?
+    13.useContext vs redux?
+    14.hosting of web app in any platform explain the procedure of deploying?
+    15.difference between sessionStorage vs localStorage?
+    16.most use React libraries that you have?
+    17.how to use react app component to another react app?
+ */
